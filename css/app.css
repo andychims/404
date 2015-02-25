@@ -1,0 +1,43 @@
+
+.drum-machine-wrapper {
+  margin: 50px;
+  padding: 300px 50px 40px;
+  background-color: #666;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.logo {
+  font-size: 3em;
+  color: white;
+  float: right;
+}
+
+.pads {
+  clear: both;
+}
+
+
+.counter {
+  height:10px;
+  width: 10px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  /*margin-right: 5px;*/
+}
+
+.counter-on {
+  background-color: red;
+}
+
+.pad {
+  padding: 5px 12px 35px;
+  margin: 15px 5px;
+  display: inline-block;
+  background-color: white;
+}
+
+.pad-on {
+  background-color: blue;
+}
