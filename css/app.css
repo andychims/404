@@ -2,14 +2,9 @@ body {
   font-family: sans-serif;
 }
 
-
-.transport-label {
-  color:white;
-}
-
 .drum-machine-wrapper {
   margin: 50px;
-  padding: 300px 50px 40px;
+  padding: 50px 50px 40px;
   background-color: #313241;
   border-radius: 3px;
   display: inline-block;
@@ -22,25 +17,45 @@ body {
   user-select: none;
 }
 
+.logo {
+  font-size: 3em;
+  color: #ee4300;
+  float: right;
+  margin-left: 100px;
+}
+
+.transport-label {
+  color:white;
+}
+
 div#sound-selector button {
-  background-color: red
+  background-color: white;
+}
+
+div#sound-selector button.sound-selected {
+  background-color: black;
+  color:white;
+}
+
+#sound-selector {
+  padding-bottom: 10px;
 }
 
 .start-stop-btn {
   background-color: #d2b30d;
   padding: 10px;
 }
+
+
 .start-stop-btn.playing {
   background-color: #f6dc4f;
 }
 
-
-
-.logo {
-  font-size: 3em;
-  color: #ee4300;
-  float: right;
+.clear-pattern {
+  background-color: gray;
+  padding: 10px;
 }
+
 
 .pads {
   clear: both;

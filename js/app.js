@@ -17,9 +17,10 @@ $( document ).ready(function() {
   // init
   //
 
+
   var sounds = [];
 
-  var tempo = 200;
+  var tempo = 120;
 
   var playing;
 
@@ -44,8 +45,8 @@ $( document ).ready(function() {
   var closedHat = new Sound("closed-hat", "closed-hat-sound");
 
   function playIt(){
-    intervalId = setInterval(triggerStep, tempo);
     playing = true;
+    setTempo(tempo);
   };
   
   function stopIt(){
@@ -60,6 +61,52 @@ $( document ).ready(function() {
   var activeSound = kick;
 
   var step = 0;
+
+  var preset1 = [[1,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0],
+                  [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+                  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,1]
+                ];
+
+  var preset2 = [[0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0],
+                  [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0]
+                ];
+
+  var presets = [preset1, preset2];
+  var currentPreset = presets[0];
+
+  function loadPreset(currentPreset){
+    for(var i = 0; i < sounds.length; i++) {
+      sounds[i].pattern = currentPreset[i];
+    }
+    updatePadUi();
+  };
+
+  loadPreset(currentPreset);
+
+  // change preset 
+  $('#preset-selector').change(function(){
+    var selectValue = $(this).val();
+    currentPreset = presets[selectValue];
+    loadPreset(currentPreset);
+  });
+
 
   //start playing on startup
   playIt();
@@ -94,15 +141,21 @@ $( document ).ready(function() {
   // ui linking
   //
 
-  //start-stop button
+  // clear pattern
+  $(".clear-pattern").click(function(){
+    for(var i = 0; i < sounds.length; i++) {
+      sounds[i].pattern = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    }
+    $(".pad-on").removeClass("pad-on");
+  });
+
+  // start-stop button
   $(".start-stop-btn").click(function(){
     if(playing == true){
       stopIt();
-      console.log("stopit")
       $(".start-stop-btn").removeClass("playing");
     } else {
       playIt();
-      console.log("playit");
       $(".start-stop-btn").addClass("playing");
     }
   });
@@ -121,45 +174,55 @@ $( document ).ready(function() {
 
   });
 
-  //tempo slider
-  // set tempo var based on slider position
-  function getTempo() {
-    tempo = 1/($(".tempoSlider").val())*700;
+
+  function setTempo(tempo) {
+    timeout = 30000/tempo;
+    clearInterval(intervalId);
+    if (playing == true) {
+      intervalId = setInterval(triggerStep, timeout);
+    };
   }
 
-  $(".tempoSlider").on("mouseup", function() {
-    clearInterval(intervalId);
-    getTempo();
-    // show tempo value
-    // $(".tempoVal").text(Math.floor(tempo));
-    intervalId = setInterval(triggerStep, tempo);
-  })
+  // tempo dial
+  $(".dial").knob({
+    'release' : function (v) { 
+      tempo = v;
+      setTempo(tempo);
+    }
+  });
 
 
-  //switch sound
-  $('#sound-selector').change(function(){
-    // $('a[rel="nofollow self"]')
-
-    selectValue = $(this).val();
-
-
+  //update pad ui
+  function updatePadUi(){
     $(".counter").removeClass('pad-on');
 
-    for(var i = 0; i < sounds.length; i++) {
-      sound = sounds[i];
-      if(sound.name == selectValue) {
-        activeSound = sound;
-      }
-    }
-
-    //update ui
     for(var i = 0; i < activeSound.pattern.length; i++) {
       if (activeSound.pattern[i] == 1) {
         var stepId = "#step" + i.toString();
         $(stepId).addClass("pad-on");
       }
     }
+  }
 
+  //switch sound
+
+  $("#sound-selector > button").click(function(){
+  // $('#sound-selector').change(function(){
+
+    selectValue = $(this).attr('class');
+    $(".sound-selected").removeClass("sound-selected");
+    $(this).addClass("sound-selected")
+    // selectValue = $(this).val();
+
+
+    for(var i = 0; i < sounds.length; i++) {
+      sound = sounds[i];
+      if(sound.name == selectValue) {
+        activeSound = sound;
+      }
+    };
+
+    updatePadUi();
 
   });
 
