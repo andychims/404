@@ -13,6 +13,8 @@ $( document ).ready(function() {
 
   var sounds = [];
 
+  var tempo = 200;
+
   var Sound = function(name, element_id) {
     var self = this;
     self.pattern = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -23,13 +25,22 @@ $( document ).ready(function() {
 
   var kick = new Sound("kick", "kick-sound");
   var snare = new Sound("snare", "snare-sound");
-  var hihat = new Sound("hihat", "hihat-sound");
+  var lowTom = new Sound("low-tom", "low-tom-sound");
+  var midTom = new Sound("mid-tom", "mid-tom-sound");
+  var highTom = new Sound("high-tom", "high-tom-sound");
+  var rimShot = new Sound("rimshot", "rimshot-sound");
+  var clap = new Sound("clap", "clap-sound");
+  var cowbell = new Sound("cowbell", "cowbell-sound");
+  var cymbal = new Sound("cymbal", "cymbal-sound");
+  var openHat = new Sound("open-hat", "open-hat-sound");
+  var closedHat = new Sound("closed-hat", "closed-hat-sound");
+
 
   //
   // init
   //
 
-  setInterval(triggerStep, 500);
+  var intervalId;
 
   var activeSound = kick;
 
@@ -65,7 +76,21 @@ $( document ).ready(function() {
   // ui linking
   //
 
-  //pad click
+  //play button
+  $(".play-btn").click(function(){
+    intervalId = setInterval(triggerStep, tempo);
+  });
+
+  //stop button
+  $(".stop-btn").click(stopIt);
+
+  function stopIt(){
+    clearInterval(intervalId);
+    step = 0;
+    $(".counter-on").removeClass("counter-on");
+  };
+
+  //sequence pad click
   $(".pad").click(function(){
     $(this).find(".counter").toggleClass("pad-on");
     var pad_number = $(this).attr('rel');
