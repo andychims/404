@@ -11,9 +11,17 @@ $( document ).ready(function() {
   //   }
   // }
 
+
+
+  //
+  // init
+  //
+
   var sounds = [];
 
   var tempo = 200;
+
+  var playing;
 
   var Sound = function(name, element_id) {
     var self = this;
@@ -35,16 +43,26 @@ $( document ).ready(function() {
   var openHat = new Sound("open-hat", "open-hat-sound");
   var closedHat = new Sound("closed-hat", "closed-hat-sound");
 
-
-  //
-  // init
-  //
+  function playIt(){
+    intervalId = setInterval(triggerStep, tempo);
+    playing = true;
+  };
+  
+  function stopIt(){
+    clearInterval(intervalId);
+    step = 0;
+    $(".counter-on").removeClass("counter-on");
+    playing = false;
+  };
 
   var intervalId;
 
   var activeSound = kick;
 
   var step = 0;
+
+  //start playing on startup
+  playIt();
 
   //
   //behavior every beat
@@ -76,19 +94,19 @@ $( document ).ready(function() {
   // ui linking
   //
 
-  //play button
-  $(".play-btn").click(function(){
-    intervalId = setInterval(triggerStep, tempo);
+  //start-stop button
+  $(".start-stop-btn").click(function(){
+    if(playing == true){
+      stopIt();
+      console.log("stopit")
+      $(".start-stop-btn").removeClass("playing");
+    } else {
+      playIt();
+      console.log("playit");
+      $(".start-stop-btn").addClass("playing");
+    }
   });
 
-  //stop button
-  $(".stop-btn").click(stopIt);
-
-  function stopIt(){
-    clearInterval(intervalId);
-    step = 0;
-    $(".counter-on").removeClass("counter-on");
-  };
 
   //sequence pad click
   $(".pad").click(function(){
@@ -102,6 +120,21 @@ $( document ).ready(function() {
     }
 
   });
+
+  //tempo slider
+  // set tempo var based on slider position
+  function getTempo() {
+    tempo = 1/($(".tempoSlider").val())*700;
+  }
+
+  $(".tempoSlider").on("mouseup", function() {
+    clearInterval(intervalId);
+    getTempo();
+    // show tempo value
+    // $(".tempoVal").text(Math.floor(tempo));
+    intervalId = setInterval(triggerStep, tempo);
+  })
+
 
   //switch sound
   $('#sound-selector').change(function(){

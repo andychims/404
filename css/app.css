@@ -1,3 +1,11 @@
+body {
+  font-family: sans-serif;
+}
+
+
+.transport-label {
+  color:white;
+}
 
 .drum-machine-wrapper {
   margin: 50px;
@@ -14,17 +22,29 @@
   user-select: none;
 }
 
+div#sound-selector button {
+  background-color: red
+}
+
+.start-stop-btn {
+  background-color: #d2b30d;
+  padding: 10px;
+}
+.start-stop-btn.playing {
+  background-color: #f6dc4f;
+}
+
+
+
 .logo {
   font-size: 3em;
   color: #ee4300;
-  font-family: sans-serif;
   float: right;
 }
 
 .pads {
   clear: both;
 }
-
 
 .counter {
   height:10px;
@@ -38,7 +58,6 @@
 .counter-on, .pad-on {
   background-color: red;
 }
-
 
 .pad {
   padding: 5px 12px 35px;

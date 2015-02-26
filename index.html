@@ -11,26 +11,25 @@
   <div class="drum-machine-wrapper">
     <div class="logo">404</div>
 
-    <select id="sound-selector">
-      <option value="kick">Kick</option>
-      <option value="snare">Snare</option>
-      <option value="low-tom">Low Tom</option>
-      <option value="mid-tom">Mid Tom</option>
-      <option value="high-tom">High Tom</option>
-      <option value="rimshot">Rimshot</option>
-      <option value="clap">Clap</option>
-      <option value="cowbell">Cowbell</option>
-      <option value="cymbal">Cymbal</option>
-      <option value="open-hat">Open Hat</option>
-      <option value="closed-hat">Closed Hat</option>
-      
-      
+    <div id="sound-selector">
+      <button class="kick">Kick</button>
+      <button class="snare">Snare</button>
+      <button class="low-tom">Low Tom</button>
+      <button class="mid-tom">Mid Tom</button>
+      <button class="high-tom">High Tom</button>
+      <button class="rimshot">Rimshot</button>
+      <button class="clap">Clap</button>
+      <button class="cowbell">Cowbell</button>
+      <button class="cymbal">Cymbal</button>
+      <button class="open-hat">Open Hat</button>
+      <button class="closed-hat">Closed Hat</button>
+      <button class="cowbell">Cowbell</button>
+    </div>
 
-      <option value="cowbell">Cowbell</option>
-    </select>
+    <button class="start-stop-btn playing">START/STOP</button>
+    <span class="transport-label">Tempo:</span>
+    <input class="tempoSlider" type="range" name="points" min="1" max="10"> 
 
-    <button class="stop-btn">STOP</button>
-    <button class="play-btn">PLAY</button>
 
     <div class="pads">
       <div class='pad pad-red' rel='0'>
