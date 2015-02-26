@@ -28,17 +28,104 @@ body {
   color:white;
 }
 
-div#sound-selector button {
+.sound-button {
   background-color: white;
+  cursor: pointer;
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 9px;
+  width: 15px;
+  text-align: center;
+  background-color: #d3d98c;
+  color: #313241;
+  border-radius: 4px;
 }
 
-div#sound-selector button.sound-selected {
+.sound-selected {
   background-color: black;
   color:white;
 }
 
 #sound-selector {
-  padding-bottom: 10px;
+  width: 140px;
+  height: 140px;
+  position: relative;
+}
+
+#kick {
+  position: absolute;
+  left: 15%;
+  top: 75%;
+}
+
+#snare {
+  position: absolute;
+  left: 5%;
+  top: 60%;
+}
+
+#low-tom {
+  position: absolute;
+  left: 5%;
+  top: 40%;
+}
+
+#mid-tom {
+  position: absolute;
+  left: 15%;
+  top: 25%;
+}
+
+#high-tom {
+  position: absolute;
+  left: 35%;
+  top: 15%;
+}
+
+#rimshot {
+  position: absolute;
+  left: 55%;
+  top: 15%;
+}
+
+#clap {
+  position: absolute;
+  left: 75%;
+  top: 25%;
+}
+
+#cowbell {
+  position: absolute;
+  right: 0;
+  top: 40%;
+}
+
+#cymbal {
+  position: absolute;
+  right: 0;
+  top: 60%;
+}
+
+#open-hat {
+  position: absolute;
+  left: 75%;
+  top: 75%;
+}
+
+#closed-hat {
+  position: absolute;
+  left: 55%;
+  top: 85%;
+}
+
+#fake-dial {
+  width: 50px;
+  height: 50px;
+  background-color: #5a707a;
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  left: 50px;
 }
 
 .start-stop-btn {

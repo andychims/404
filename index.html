@@ -13,7 +13,7 @@
     <div class="logo">404</div>
 
     <select id="preset-selector">
-      <option value=0>Preset 1</option>
+      <option value=0>Four on the Floor</option>
       <option value=1>Preset 2</option>
     </select>
 <!-- SOUND SELECTOR DROPDOWN, REMOVED -->
@@ -35,17 +35,18 @@
 
 <!-- SOUND SELECTOR BUTTONS -->
     <div id="sound-selector">
-      <button class="kick sound-selected">Kick</button>
-      <button class="snare">Snare</button>
-      <button class="low-tom">Low Tom</button>
-      <button class="mid-tom">Mid Tom</button>
-      <button class="high-tom">High Tom</button>
-      <button class="rimshot">Rimshot</button>
-      <button class="clap">Clap</button>
-      <button class="cowbell">Cowbell</button>
-      <button class="cymbal">Cymbal</button>
-      <button class="open-hat">Open Hat</button>
-      <button class="closed-hat">Closed Hat</button>
+      <div class="sound-button sound-selected" id="kick">BD</div>
+      <div class="sound-button" id="snare">SD</div>
+      <div class="sound-button" id="low-tom">LT</div>
+      <div class="sound-button" id="mid-tom">MT</div>
+      <div class="sound-button" id="high-tom">HT</div>
+      <div class="sound-button" id="rimshot">RS</div>
+      <div class="sound-button" id="clap">CP</div>
+      <div class="sound-button" id="cowbell">CB</div>
+      <div class="sound-button" id="cymbal">CY</div>
+      <div class="sound-button" id="open-hat">OH</div>
+      <div class="sound-button" id="closed-hat">CH</div>
+      <div id="fake-dial"></div>
     </div>
 
     <input type="text" value="120" class="dial" data-min="60" data-max="200" data-angleOffset="-150" data-angleArc="300">
