@@ -12,7 +12,7 @@ $( document ).ready(function() {
   // }
 
   var sounds = [];
-  
+
   var Sound = function(name, element_id) {
     var self = this;
     self.pattern = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
@@ -23,6 +23,7 @@ $( document ).ready(function() {
 
   var kick = new Sound("kick", "kick-sound");
   var snare = new Sound("snare", "snare-sound");
+  var hihat = new Sound("hihat", "hihat-sound");
 
   //
   // init
@@ -30,8 +31,7 @@ $( document ).ready(function() {
 
   setInterval(triggerStep, 500);
 
-  var activeSound = kick
-  var activePattern = kick.pattern;
+  var activeSound = kick;
 
   var step = 0;
 
@@ -84,22 +84,24 @@ $( document ).ready(function() {
 
     selectValue = $(this).val();
 
+
+    $(".counter").removeClass('pad-on');
+
     for(var i = 0; i < sounds.length; i++) {
       sound = sounds[i];
-      if(sound.name = selectValue) {
+      if(sound.name == selectValue) {
         activeSound = sound;
       }
     }
 
     //update ui
-    $(".counter").removeClass('pad-on');
     for(var i = 0; i < activeSound.pattern.length; i++) {
       if (activeSound.pattern[i] == 1) {
         var stepId = "#step" + i.toString();
-        console.log(stepId);
         $(stepId).addClass("pad-on");
       }
     }
+
 
   });
 
