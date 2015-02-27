@@ -6,7 +6,6 @@ div {
   box-sizing: border-box;
 }
 
-
 .hidden {
   display: none;
 }
@@ -40,12 +39,6 @@ div {
   padding-right: 40px;
 }
 
-
-.small-dial {
-  height: 50px;
-  width: 60px;
-}
-
 .tempo-dial-wrapper {
   border-top: 4px solid #868b80;
   padding-top: 20px;
@@ -75,6 +68,11 @@ div {
   text-align: center;
 }
 
+.small-dial {
+  height: 50px;
+  width: 60px;
+}
+
 .instrument-control-column span {
   color: white;
   font-size: 10px;
@@ -90,16 +88,7 @@ div {
   padding-left: 300px;
 }
 
-.transport-label {
-  color:white;
-}
-
-.bottom-left-controls {
-  display: inline-block;
-  background-color: #868b80;
-  padding: 20px;
-  margin-top: 20px;
-}
+/*sound selector*/
 
 .sound-button, .preset {
   cursor: pointer;
@@ -114,17 +103,6 @@ div {
   font-weight: bold;
 }
 
-.preset-selector {
-  padding-bottom: 12px;
-  color: white;
-  font-size: 13px;
-  padding: 10px 8px;
-}
-
-.preset-selector div {
-  width: initial;
-}
-
 .sound-selected, .preset-selected {
   background-color: #ee4300;
   color:white;
@@ -135,11 +113,6 @@ div {
   height: 140px;
   position: relative;
   margin-bottom: 20px;
-}
-
-.bottom-right-controls {
-  vertical-align: top;
-  display: inline-block;
 }
 
 #kick {
@@ -218,9 +191,14 @@ div {
   left: 46px;
 }
 
+/* bottom controls */
 
-.start-stop-btn {
-  background-color: #d2b30d;
+.bottom-left-controls {
+  display: inline-block;
+  background-color: #868b80;
+  padding: 20px 30px;
+  margin-top: 20px;
+  margin-right: 30px;
 }
 
 .button {
@@ -231,11 +209,15 @@ div {
   margin-bottom: 5px;
   font-weight: bold;
   color: #313241;
-
+  font-size: 14px;
 }
 
 .start-stop-btn.playing {
   background-color: #f6dc4f;
+}
+
+.start-stop-btn {
+  background-color: #d2b30d;
 }
 
 .clear-pattern {
@@ -243,29 +225,16 @@ div {
   margin-right:10px;
 }
 
+.bottom-right-controls {
+  vertical-align: top;
+  display: inline-block;
+}
 
 .pads {
   display: inline-block;
   vertical-align: top;
   padding-top: 15px;
   height: 100px;
-}
-
-.counter {
-  height:10px;
-  width: 10px;
-  background-color: black;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.counter-on, .pad-on {
-  background-color: red;
-}
-
-.counter-on {
-  margin-bottom: 5px;
-  transition: margin-bottom 0.3s;
 }
 
 .pad-wrapper {
@@ -297,53 +266,30 @@ div {
   background-color: #dfdb04;
 }
 
+.counter {
+  height:10px;
+  width: 10px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+}
 
+.counter-on, .pad-on {
+  background-color: red;
+}
 
+.counter-on {
+  margin-bottom: 5px;
+  transition: margin-bottom 0.3s;
+}
 
-/*---------------
- UNMUTE BUTTON
----------------*/
-.muted {
-  position: absolute;
-  bottom: 5%;
-  left: 38%;
+.preset-selector {
+  padding-bottom: 12px;
   color: white;
-  font-size: 4em;
-  cursor: pointer;
-  z-index: 1000;
-  background: black;
-  padding: 24px;
-  text-align: center;
-    -webkit-animation-name: blinker;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-iteration-count: infinite;
-    
-    -moz-animation-name: blinker;
-    -moz-animation-duration: 1s;
-    -moz-animation-timing-function: linear;
-    -moz-animation-iteration-count: infinite;
-    
-    animation-name: blinker;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
+  font-size: 13px;
+  padding: 10px 8px;
 }
 
-@-moz-keyframes blinker {  
-    0% { opacity: 1.0; }
-    50% { opacity: 0.0; }
-    100% { opacity: 1.0; }
-}
-
-@-webkit-keyframes blinker {  
-    0% { opacity: 1.0; }
-    50% { opacity: 0.0; }
-    100% { opacity: 1.0; }
-}
-
-@keyframes blinker {  
-    0% { opacity: 1.0; }
-    50% { opacity: 0.0; }
-    100% { opacity: 1.0; }
+.preset-selector div {
+  width: initial;
 }

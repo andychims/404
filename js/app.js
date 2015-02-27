@@ -19,7 +19,7 @@ $( document ).ready(function() {
     self.sound_element = document.getElementById(element_id);
     self.volume = 1;
     sounds.push(self);
-    $('.instrument-controls').append('<div class="instrument-control-column"><div class="small-dial ' + self.name + '-volume-dial-wrapper"><input type="text" value="100" class="' + self.name + '-volume-dial" data-min="0" data-max="100"  data-fgColor="#ee4300" data-width="50" data-thickness=".5" data-angleOffset="180"></div><span>' + self.name + ' vol</span></div>');
+    $('.instrument-controls').append('<div class="instrument-control-column"><div class="small-dial ' + self.name + '-volume-dial-wrapper"><input type="text" value="100" class="' + self.name + '-volume-dial" data-min="0" data-max="100"  data-fgColor="#ee4300" data-angleArc="300" data-width="50" data-thickness=".5" data-angleOffset="-150"></div><span>' + self.name + ' vol</span></div>');
 
     var knobClass = '.' + self.name + '-volume-dial';
     $(knobClass).knob({
@@ -27,13 +27,6 @@ $( document ).ready(function() {
         self.volume = volume/100;      
       }
     });
-
-  // $(".kick-volume-dial").knob({
-  //   'release' : function (volume) { 
-  //     kick.volume = volume/100;      
-  //   }
-  // });
-
   }
 
 
@@ -184,10 +177,6 @@ $( document ).ready(function() {
   // ui linking //
   //------------//
 
-  // $(".muted").click(function(){
-  //   muted = false;
-  //   $(this).addClass("hidden");
-  // });
 
   $(".start-stop-btn").click(function(){
     if(playing == true){
@@ -214,13 +203,6 @@ $( document ).ready(function() {
     setActiveSoundByName(soundName);
     updatePadUi();
   });
-
-  // change preset 
-  // $('#preset-selector').change(function(){
-  //   var selectValue = $(this).val();
-  //   currentPreset = presets[selectValue];
-  //   loadPreset(currentPreset);
-  // });
 
   $(".preset").click(function() {
     $(".preset-selected").removeClass("preset-selected");
