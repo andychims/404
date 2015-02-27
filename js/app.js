@@ -63,7 +63,7 @@ $( document ).ready(function() {
   var currentPreset = presets[0];
 
   loadPreset(currentPreset);
-  playIt();
+  //playIt();
 
 
   //----------------------//
@@ -198,7 +198,7 @@ $( document ).ready(function() {
   });
 
   // tempo dial
-  $(".dial").knob({
+  $(".tempo-dial").knob({
     'release' : function (tempo) { 
       setTempo(tempo);
     }

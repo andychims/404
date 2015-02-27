@@ -10,100 +10,135 @@
 </head>
 <body>
   <div class="drum-machine-wrapper">
-    <div class="logo">404</div>
+    <div class="top-section">
+      <div class="left-control-wrapper">
+        <!--<select id="preset-selector">
+          <option value=0>Four on the Floor</option>
+          <option value=1>Preset 2</option>
+        </select>-->
 
-    <select id="preset-selector">
-      <option value=0>Four on the Floor</option>
-      <option value=1>Preset 2</option>
-    </select>
-<!-- SOUND SELECTOR DROPDOWN, REMOVED -->
-<!-- 
-    <select id="sound-selector">
-      <option value="kick">Kick</option>
-      <option value="snare">Snare</option>
-      <option value="low-tom">Low Tom</option>
-      <option value="mid-tom">Mid Tom</option>
-      <option value="high-tom">High Tom</option>
-      <option value="rimshot">Rimshot</option>
-      <option value="clap">Clap</option>
-      <option value="cowbell">Cowbell</option>
-      <option value="cymbal">Cymbal</option>
-      <option value="open-hat">Open Hat</option>
-      <option value="closed-hat">Closed Hat</option>
-      <option value="cowbell">Cowbell</option>
-    </select> -->
+        <div id="sound-selector">
+          <div class="sound-button sound-selected" id="kick">BD</div>
+          <div class="sound-button" id="snare">SD</div>
+          <div class="sound-button" id="low-tom">LT</div>
+          <div class="sound-button" id="mid-tom">MT</div>
+          <div class="sound-button" id="high-tom">HT</div>
+          <div class="sound-button" id="rimshot">RS</div>
+          <div class="sound-button" id="clap">CP</div>
+          <div class="sound-button" id="cowbell">CB</div>
+          <div class="sound-button" id="cymbal">CY</div>
+          <div class="sound-button" id="open-hat">OH</div>
+          <div class="sound-button" id="closed-hat">CH</div>
+          <div id="fake-dial"></div>
+        </div>
 
-<!-- SOUND SELECTOR BUTTONS -->
-    <div id="sound-selector">
-      <div class="sound-button sound-selected" id="kick">BD</div>
-      <div class="sound-button" id="snare">SD</div>
-      <div class="sound-button" id="low-tom">LT</div>
-      <div class="sound-button" id="mid-tom">MT</div>
-      <div class="sound-button" id="high-tom">HT</div>
-      <div class="sound-button" id="rimshot">RS</div>
-      <div class="sound-button" id="clap">CP</div>
-      <div class="sound-button" id="cowbell">CB</div>
-      <div class="sound-button" id="cymbal">CY</div>
-      <div class="sound-button" id="open-hat">OH</div>
-      <div class="sound-button" id="closed-hat">CH</div>
-      <div id="fake-dial"></div>
+        <div class="tempo-dial-wrapper">
+          <input type="text" value="120" class="tempo-dial" data-min="60" data-max="200" data-angleOffset="-150" data-angleArc="300" data-fgColor="#ee4300" data-width="150">
+        </div>
+      </div>
+
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column"></div>
+      <br />
+      <div class="logo">page not found 404</div>
     </div>
 
-    <input type="text" value="120" class="dial" data-min="60" data-max="200" data-angleOffset="-150" data-angleArc="300">
-
-
-    <button class="clear-pattern">CLEAR</button>
-
-    <button class="start-stop-btn playing">START/STOP</button>
+    
+    <div class="bottom-left-controls">
+      <div class="button clear-pattern">CLEAR</div>
+      <div class="button start-stop-btn playing">START/STOP</div>
+    </div>
 
     <div class="pads">
-      <div class='pad pad-red' rel='0'>
-        <div class='counter' id="step0"></div>
+      <div class="pad-wrapper">1
+        <div class='pad pad-red' rel='0'>
+          <div class='counter' id="step0"></div>
+        </div>
       </div>
-      <div class='pad pad-red' rel='1'>
-        <div class='counter' id="step1"></div>
+      <div class="pad-wrapper">2
+        <div class='pad pad-red' rel='1'>
+          <div class='counter' id="step1"></div>
+        </div>
       </div>
-      <div class='pad pad-red' rel='2'>
-        <div class='counter' id="step2"></div>
+      <div class="pad-wrapper">3
+        <div class='pad pad-red' rel='2'>
+          <div class='counter' id="step2"></div>
+        </div>
       </div>
-      <div class='pad pad-red' rel='3'>
-        <div class='counter' id="step3"></div>
+      <div class="pad-wrapper">4
+        <div class='pad pad-red' rel='3'>
+          <div class='counter' id="step3"></div>
+        </div>
       </div>
-      <div class='pad pad-orange' rel='4'>
-        <div class='counter' id="step4"></div>
+      <div class="pad-wrapper">5
+        <div class='pad pad-orange' rel='4'>
+          <div class='counter' id="step4"></div>
+        </div>
       </div>
-      <div class='pad pad-orange' rel='5'>
-        <div class='counter' id="step5"></div>
+      <div class="pad-wrapper">6
+        <div class='pad pad-orange' rel='5'>
+          <div class='counter' id="step5"></div>
+        </div>
       </div>
-      <div class='pad pad-orange' rel='6'>
-        <div class='counter' id="step6"></div>
+      <div class="pad-wrapper">7
+        <div class='pad pad-orange' rel='6'>
+          <div class='counter' id="step6"></div>
+        </div>
       </div>
-      <div class='pad pad-orange' rel='7'>
-        <div class='counter' id="step7"></div>
+      <div class="pad-wrapper">8
+        <div class='pad pad-orange' rel='7'>
+          <div class='counter' id="step7"></div>
+        </div>
       </div>
-      <div class='pad pad-yellow' rel='8'>
-        <div class='counter' id="step8"></div>
+      <div class="pad-wrapper">9
+        <div class='pad pad-yellow' rel='8'>
+          <div class='counter' id="step8"></div>
+        </div>
       </div>
-      <div class='pad pad-yellow' rel='9'>
-        <div class='counter' id="step9"></div>
+      <div class="pad-wrapper">10
+        <div class='pad pad-yellow' rel='9'>
+          <div class='counter' id="step9"></div>
+        </div>
       </div>
-      <div class='pad pad-yellow' rel='10'>
-        <div class='counter' id="step10"></div>
+      <div class="pad-wrapper">11
+        <div class='pad pad-yellow' rel='10'>
+          <div class='counter' id="step10"></div>
+        </div>
       </div>
-      <div class='pad pad-yellow' rel='11'>
-        <div class='counter' id="step11"></div>
+      <div class="pad-wrapper">12
+        <div class='pad pad-yellow' rel='11'>
+          <div class='counter' id="step11"></div>
+        </div>
       </div>
-      <div class='pad' rel='12'>
-        <div class='counter' id="step12"></div>
+      <div class="pad-wrapper">13
+        <div class='pad' rel='12'>
+          <div class='counter' id="step12"></div>
+        </div>
       </div>
-      <div class='pad' rel='13'>
-        <div class='counter' id="step13"></div>
+      <div class="pad-wrapper">14
+        <div class='pad' rel='13'>
+          <div class='counter' id="step13"></div>
+        </div>
       </div>
-      <div class='pad' rel='14'>
-        <div class='counter' id="step14"></div>
+      <div class="pad-wrapper">15
+        <div class='pad' rel='14'>
+          <div class='counter' id="step14"></div>
+        </div>
       </div>
-      <div class='pad' rel='15'>
-        <div class='counter' id="step15"></div>
+      <div class="pad-wrapper">16
+        <div class='pad' rel='15'>
+          <div class='counter' id="step15"></div>
+        </div>
       </div>
     </div>
   </div>
