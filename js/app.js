@@ -10,12 +10,14 @@ $( document ).ready(function() {
   var playing;
   var intervalId;
   var step = 0;
+  var masterVolume = 1;
 
   var Sound = function(name, element_id) {
     var self = this;
     self.pattern = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
     self.name = name;
     self.sound_element = document.getElementById(element_id);
+    self.volume = 1;
     sounds.push(self);
   }
 
@@ -48,22 +50,23 @@ $( document ).ready(function() {
 
   var preset2 = [[0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0],
                   [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],
-                  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                  [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+                  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+                  [1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0],
                   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
                   [1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0]
                 ];
 
   var presets = [preset1, preset2];
   var currentPreset = presets[0];
+  var muted = true;
 
   loadPreset(currentPreset);
-  //playIt();
+  playIt();
 
 
   //----------------------//
@@ -78,13 +81,15 @@ $( document ).ready(function() {
     $(".counter").removeClass("counter-on");
     $(activeStepID).addClass("counter-on");
 
-
-    for (var i=0; i < sounds.length; i++) {
-      sound = sounds[i];
-      if(sound.pattern[step] == 1) {
-        sound.sound_element.currentTime = 0;
-        sound.sound_element.play();
-      } 
+    if (muted == false) {
+      for (var i=0; i < sounds.length; i++) {
+        sound = sounds[i];
+        if(sound.pattern[step] == 1) {
+          sound.sound_element.currentTime = 0;
+          sound.sound_element.volume = sound.volume;
+          sound.sound_element.play();
+        } 
+      }
     }
 
     step++;
@@ -159,6 +164,11 @@ $( document ).ready(function() {
   // ui linking //
   //------------//
 
+  $(".muted").click(function(){
+    muted = false;
+    $(this).addClass("hidden");
+  });
+
   $(".start-stop-btn").click(function(){
     if(playing == true){
       stopIt();
@@ -186,8 +196,17 @@ $( document ).ready(function() {
   });
 
   // change preset 
-  $('#preset-selector').change(function(){
-    var selectValue = $(this).val();
+  // $('#preset-selector').change(function(){
+  //   var selectValue = $(this).val();
+  //   currentPreset = presets[selectValue];
+  //   loadPreset(currentPreset);
+  // });
+
+  $(".preset").click(function() {
+    $(".preset-selected").removeClass("preset-selected");
+    $(this).addClass("preset-selected");
+    var selectValue = $(this).attr('rel');
+    console.log("value = " + selectValue);
     currentPreset = presets[selectValue];
     loadPreset(currentPreset);
   });
@@ -201,6 +220,34 @@ $( document ).ready(function() {
   $(".tempo-dial").knob({
     'release' : function (tempo) { 
       setTempo(tempo);
+    }
+  });
+
+  // // master volume dial
+  // $(".master-volume-dial").knob({
+  //   'release' : function (volume) { 
+  //     masterVolume = volume/100;      
+  //   }
+  // });
+
+  // kick volume dial
+  $(".kick-volume-dial").knob({
+    'release' : function (volume) { 
+      kick.volume = volume/100;      
+    }
+  });
+
+  // snare volume dial
+  $(".snare-volume-dial").knob({
+    'release' : function (volume) { 
+      snare.volume = volume/100;      
+    }
+  });
+
+  // low tom volume dial
+  $(".low-tom-volume-dial").knob({
+    'release' : function (volume) { 
+      lowTom.volume = volume/100;      
     }
   });
 

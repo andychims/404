@@ -10,6 +10,8 @@
 </head>
 <body>
   <div class="drum-machine-wrapper">
+    <div class="muted">UNMUTE?</div>
+
     <div class="top-section">
       <div class="left-control-wrapper">
         <!--<select id="preset-selector">
@@ -31,15 +33,37 @@
           <div class="sound-button" id="closed-hat">CH</div>
           <div id="fake-dial"></div>
         </div>
-
+        
         <div class="tempo-dial-wrapper">
+          <p>TEMPO:</p>
           <input type="text" value="120" class="tempo-dial" data-min="60" data-max="200" data-angleOffset="-150" data-angleArc="300" data-fgColor="#ee4300" data-width="150">
         </div>
+        
+    <!--     <p>MASTER VOL:</p>
+        <div class="small-dial master-volume-dial-wrapper">
+          <input type="text" value="100" class="master-volume-dial" data-min="0" data-max="100"  data-fgColor="#ee4300" data-width="50" data-thickness=".5" data-angleOffset="180">
+        </div> -->
       </div>
 
-      <div class="instrument-control-column"></div>
-      <div class="instrument-control-column"></div>
-      <div class="instrument-control-column"></div>
+      <div class="instrument-control-column">
+        
+        <div class="small-dial kick-volume-dial-wrapper">
+          <input type="text" value="100" class="kick-volume-dial" data-min="0" data-max="100"  data-fgColor="#ee4300" data-width="50" data-thickness=".5" data-angleOffset="180">
+        </div>
+        <span>Kick Vol</span>
+      </div>
+      <div class="instrument-control-column">
+        <div class="small-dial snare-volume-dial-wrapper">
+          <input type="text" value="100" class="snare-volume-dial" data-min="0" data-max="100"  data-fgColor="#ee4300" data-width="50" data-thickness=".5" data-angleOffset="180">
+        </div>
+        <span>Snare Vol</span>
+      </div>
+      <div class="instrument-control-column">
+        <div class="small-dial low-tom-volume-dial-wrapper">
+          <input type="text" value="100" class="low-tom-volume-dial" data-min="0" data-max="100"  data-fgColor="#ee4300" data-width="50" data-thickness=".5" data-angleOffset="180">
+        </div>
+        <span>L-Tom Vol</span>
+      </div>
       <div class="instrument-control-column"></div>
       <div class="instrument-control-column"></div>
       <div class="instrument-control-column"></div>
@@ -59,88 +83,102 @@
       <div class="button start-stop-btn playing">START/STOP</div>
     </div>
 
-    <div class="pads">
-      <div class="pad-wrapper">1
-        <div class='pad pad-red' rel='0'>
-          <div class='counter' id="step0"></div>
+  <div class="bottom-right-controls">
+      <div class="pads">
+        <div class="pad-wrapper">1
+          <div class='pad pad-red' rel='0'>
+            <div class='counter' id="step0"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">2
+          <div class='pad pad-red' rel='1'>
+            <div class='counter' id="step1"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">3
+          <div class='pad pad-red' rel='2'>
+            <div class='counter' id="step2"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">4
+          <div class='pad pad-red' rel='3'>
+            <div class='counter' id="step3"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">5
+          <div class='pad pad-orange' rel='4'>
+            <div class='counter' id="step4"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">6
+          <div class='pad pad-orange' rel='5'>
+            <div class='counter' id="step5"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">7
+          <div class='pad pad-orange' rel='6'>
+            <div class='counter' id="step6"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">8
+          <div class='pad pad-orange' rel='7'>
+            <div class='counter' id="step7"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">9
+          <div class='pad pad-yellow' rel='8'>
+            <div class='counter' id="step8"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">10
+          <div class='pad pad-yellow' rel='9'>
+            <div class='counter' id="step9"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">11
+          <div class='pad pad-yellow' rel='10'>
+            <div class='counter' id="step10"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">12
+          <div class='pad pad-yellow' rel='11'>
+            <div class='counter' id="step11"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">13
+          <div class='pad' rel='12'>
+            <div class='counter' id="step12"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">14
+          <div class='pad' rel='13'>
+            <div class='counter' id="step13"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">15
+          <div class='pad' rel='14'>
+            <div class='counter' id="step14"></div>
+          </div>
+        </div>
+        <div class="pad-wrapper">16
+          <div class='pad' rel='15'>
+            <div class='counter' id="step15"></div>
+          </div>
         </div>
       </div>
-      <div class="pad-wrapper">2
-        <div class='pad pad-red' rel='1'>
-          <div class='counter' id="step1"></div>
-        </div>
+
+      <br>
+
+      <div class="preset-selector">
+        <span>Preset Patterns:</span>
+        <div class="preset preset-selected" rel=0>4 on the floor</div>
+        <div class="preset" rel=1>funky monkey</div>
       </div>
-      <div class="pad-wrapper">3
-        <div class='pad pad-red' rel='2'>
-          <div class='counter' id="step2"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">4
-        <div class='pad pad-red' rel='3'>
-          <div class='counter' id="step3"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">5
-        <div class='pad pad-orange' rel='4'>
-          <div class='counter' id="step4"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">6
-        <div class='pad pad-orange' rel='5'>
-          <div class='counter' id="step5"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">7
-        <div class='pad pad-orange' rel='6'>
-          <div class='counter' id="step6"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">8
-        <div class='pad pad-orange' rel='7'>
-          <div class='counter' id="step7"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">9
-        <div class='pad pad-yellow' rel='8'>
-          <div class='counter' id="step8"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">10
-        <div class='pad pad-yellow' rel='9'>
-          <div class='counter' id="step9"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">11
-        <div class='pad pad-yellow' rel='10'>
-          <div class='counter' id="step10"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">12
-        <div class='pad pad-yellow' rel='11'>
-          <div class='counter' id="step11"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">13
-        <div class='pad' rel='12'>
-          <div class='counter' id="step12"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">14
-        <div class='pad' rel='13'>
-          <div class='counter' id="step13"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">15
-        <div class='pad' rel='14'>
-          <div class='counter' id="step14"></div>
-        </div>
-      </div>
-      <div class="pad-wrapper">16
-        <div class='pad' rel='15'>
-          <div class='counter' id="step15"></div>
-        </div>
-      </div>
+
+      
     </div>
+
+
   </div>
 
   <audio id="kick-sound" src="audio/kick.wav" preload="auto"></audio>

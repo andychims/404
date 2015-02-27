@@ -6,9 +6,14 @@ div {
   box-sizing: border-box;
 }
 
+
+.hidden {
+  display: none;
+}
+
 .drum-machine-wrapper {
   margin: 50px;
-  padding: 50px 50px 40px;
+  padding: 20px 50px 40px;
   background-color: #313241;
   border-radius: 3px;
   display: inline-block;
@@ -35,11 +40,25 @@ div {
   padding-right: 40px;
 }
 
+
+.small-dial {
+  height: 50px;
+  width: 60px;
+}
+
 .tempo-dial-wrapper {
   border-top: 4px solid #868b80;
   padding-top: 20px;
+  position: relative;
 }
 
+.tempo-dial-wrapper p {
+  position: absolute;
+  top: 55px;
+  left: 54px;
+  color: white;
+  font-size: 12px;
+}
 
 .instrument-control-column {
   width: 60px;
@@ -47,6 +66,12 @@ div {
   margin-bottom: 100px;
   display: inline-block;
   border-right: 2px solid #868b80;
+  vertical-align: top;
+}
+
+.instrument-control-column span {
+  color: white;
+  font-size: 10px;
 }
 
 .logo {
@@ -70,8 +95,7 @@ div {
   margin-top: 20px;
 }
 
-.sound-button {
-  background-color: white;
+.sound-button, .preset {
   cursor: pointer;
   display: inline-block;
   padding: 3px 5px;
@@ -84,7 +108,18 @@ div {
   font-weight: bold;
 }
 
-.sound-selected {
+.preset-selector {
+  padding-bottom: 12px;
+  color: white;
+  font-size: 13px;
+  padding: 10px 8px;
+}
+
+.preset-selector div {
+  width: initial;
+}
+
+.sound-selected, .preset-selected {
   background-color: #ee4300;
   color:white;
 }
@@ -94,6 +129,11 @@ div {
   height: 140px;
   position: relative;
   margin-bottom: 20px;
+}
+
+.bottom-right-controls {
+  vertical-align: top;
+  display: inline-block;
 }
 
 #kick {
@@ -163,13 +203,13 @@ div {
 }
 
 #fake-dial {
-  width: 50px;
-  height: 50px;
+  width: 58px;
+  height: 58px;
   background-color: #5a707a;
   border-radius: 50%;
   position: absolute;
-  top: 50px;
-  left: 50px;
+  top: 49px;
+  left: 46px;
 }
 
 
@@ -202,6 +242,7 @@ div {
   display: inline-block;
   vertical-align: top;
   padding-top: 15px;
+  height: 100px;
 }
 
 .counter {
@@ -228,11 +269,12 @@ div {
   text-align: center;
   vertical-align: top;
   font-size: 10px;
+  padding-left:9px;
 }
 
 .pad {
   padding: 5px 12px 35px;
-  margin: 5px 0px 5px 10px;
+  margin: 5px 0px;
   background-color: #e1eac1;
   cursor: pointer;
 }
@@ -247,4 +289,55 @@ div {
 
 .pad-yellow {
   background-color: #dfdb04;
+}
+
+
+
+
+/*---------------
+ UNMUTE BUTTON
+---------------*/
+.muted {
+  position: absolute;
+  bottom: 5%;
+  left: 38%;
+  color: white;
+  font-size: 4em;
+  cursor: pointer;
+  z-index: 1000;
+  background: black;
+  padding: 24px;
+  text-align: center;
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
 }
