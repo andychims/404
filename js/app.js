@@ -19,7 +19,24 @@ $( document ).ready(function() {
     self.sound_element = document.getElementById(element_id);
     self.volume = 1;
     sounds.push(self);
+    $('.instrument-controls').append('<div class="instrument-control-column"><div class="small-dial ' + self.name + '-volume-dial-wrapper"><input type="text" value="100" class="' + self.name + '-volume-dial" data-min="0" data-max="100"  data-fgColor="#ee4300" data-width="50" data-thickness=".5" data-angleOffset="180"></div><span>' + self.name + ' vol</span></div>');
+
+    var knobClass = '.' + self.name + '-volume-dial';
+    $(knobClass).knob({
+      'release' : function (volume) { 
+        self.volume = volume/100;      
+      }
+    });
+
+  // $(".kick-volume-dial").knob({
+  //   'release' : function (volume) { 
+  //     kick.volume = volume/100;      
+  //   }
+  // });
+
   }
+
+
 
   var kick = new Sound("kick", "kick-sound");
   var snare = new Sound("snare", "snare-sound");
@@ -34,6 +51,9 @@ $( document ).ready(function() {
   var closedHat = new Sound("closed-hat", "closed-hat-sound");
 
   var activeSound = kick;
+
+
+
 
   var preset1 = [[1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0],
                   [0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0],
@@ -63,10 +83,10 @@ $( document ).ready(function() {
 
   var presets = [preset1, preset2];
   var currentPreset = presets[0];
-  var muted = true;
+  // var muted = false;
 
   loadPreset(currentPreset);
-  playIt();
+  // playIt();
 
 
   //----------------------//
@@ -81,7 +101,7 @@ $( document ).ready(function() {
     $(".counter").removeClass("counter-on");
     $(activeStepID).addClass("counter-on");
 
-    if (muted == false) {
+    // if (muted == false) {
       for (var i=0; i < sounds.length; i++) {
         sound = sounds[i];
         if(sound.pattern[step] == 1) {
@@ -90,7 +110,7 @@ $( document ).ready(function() {
           sound.sound_element.play();
         } 
       }
-    }
+    // }
 
     step++;
     if (step > 15) {
@@ -164,10 +184,10 @@ $( document ).ready(function() {
   // ui linking //
   //------------//
 
-  $(".muted").click(function(){
-    muted = false;
-    $(this).addClass("hidden");
-  });
+  // $(".muted").click(function(){
+  //   muted = false;
+  //   $(this).addClass("hidden");
+  // });
 
   $(".start-stop-btn").click(function(){
     if(playing == true){
@@ -220,34 +240,6 @@ $( document ).ready(function() {
   $(".tempo-dial").knob({
     'release' : function (tempo) { 
       setTempo(tempo);
-    }
-  });
-
-  // // master volume dial
-  // $(".master-volume-dial").knob({
-  //   'release' : function (volume) { 
-  //     masterVolume = volume/100;      
-  //   }
-  // });
-
-  // kick volume dial
-  $(".kick-volume-dial").knob({
-    'release' : function (volume) { 
-      kick.volume = volume/100;      
-    }
-  });
-
-  // snare volume dial
-  $(".snare-volume-dial").knob({
-    'release' : function (volume) { 
-      snare.volume = volume/100;      
-    }
-  });
-
-  // low tom volume dial
-  $(".low-tom-volume-dial").knob({
-    'release' : function (volume) { 
-      lowTom.volume = volume/100;      
     }
   });
 
